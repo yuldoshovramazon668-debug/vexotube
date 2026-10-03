@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>VexoTube</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- LOGIN / REGISTER -->
+  <div id="authScreen" class="auth-screen">
+
+    <div class="auth-box">
+
+      <div class="auth-logo">V</div>
+
+      <h1>VexoTube</h1>
+      <p>Video dunyosiga xush kelibsiz</p>
+
+      <!-- LOGIN -->
+      <form id="loginForm">
+
+        <input
+          type="email"
+          id="loginEmail"
+          placeholder="Email"
+          required
+        >
+
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Parol"
+          required
+        >
+
+        <button type="submit">
+          Kirish
+        </button>
+
+      </form>
+
+      <!-- REGISTER -->
+      <form id="registerForm" class="hidden">
+
+        <input
+          type="text"
+          id="registerName"
+          placeholder="Ismingiz"
+          required
+        >
+
+        <input
+          type="email"
+          id="registerEmail"
+          placeholder="Email"
+          required
+        >
+
+        <input
+          type="password"
+          id="registerPassword"
+          placeholder="Parol"
+          required
+        >
+
+        <button type="submit">
+          Ro‘yxatdan o‘tish
+        </button>
+
+      </form>
+
+      <p class="auth-switch">
+        <span id="showRegister">
+          Yangi akkaunt yaratish
+        </span>
+      </p>
+
+      <p class="auth-switch">
+        <span id="showLogin" class="hidden">
+          Akkauntim bor
+        </span>
+      </p>
+
+      <p id="authMessage" class="auth-message"></p>
+
+    </div>
+
+  </div>
+
+
+  <!-- ASOSIY ILOVA -->
+
+  <div id="app" class="hidden">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+
+      <div class="brand">
+
+        <div class="logo">
+          V
+        </div>
+
+        <div class="brand-name">
+          VexoTube
+        </div>
+
+      </div>
+
+
+      <div class="search">
+
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Qidirish..."
+        >
+
+      </div>
+
+    </header>
+
+
+    <!-- LAYOUT -->
+    <div class="layout">
+
+
+      <!-- SIDEBAR -->
+
+      <aside class="sidebar">
+
+        <ul class="menu">
+
+          <li class="active" data-page="home">
+            🏠 Bosh sahifa
+          </li>
+
+          <li data-page="shorts">
+            🎬 Shorts
+          </li>
+
+          <li data-page="subscriptions">
+            📺 Obunalar
+          </li>
+
+          <li data-page="history">
+            🕘 Tarix
+          </li>
+
+          <li data-page="saved">
+            🔖 Saqlangan
+          </li>
+
+          <li data-page="playlists">
+            📁 Playlist
+          </li>
+
+          <li data-page="upload">
+            ⬆️ Video yuklash
+          </li>
+
+          <li data-page="channel">
+            👤 Kanalim
+          </li>
+
+          <li data-page="profile">
+            ⚙️ Profil
+          </li>
+
+          <li data-page="settings">
+            🔧 Sozlamalar
+          </li>
+
+          <li data-page="admin">
+            🛠️ Admin
+          </li>
+
+        </ul>
+
+      </aside>
+
+
+      <!-- MAIN -->
+
+      <main class="main">
+
+
+        <!-- HOME -->
+
+        <section id="home" class="page active">
+
+          <div class="hero">
+
+            <h1>
+              VexoTube
+            </h1>
+
+            <p>
+              Sevimli videolaringizni tomosha qiling,
+              yangi videolar kashf qiling va o‘z
+              videolaringizni ulashing.
+            </p>
+
+            <button onclick="openUpload()">
+              ⬆️ Video yuklash
+            </button>
+
+          </div>
+
+
+          <!-- CATEGORIES -->
+
+          <div class="categories">
+
+            <div class="category">
+              Hammasi
+            </div>
+
+            <div class="category">
+              🎮 Gaming
+            </div>
+
+            <div class="category">
+              🎵 Musiqa
+            </div>
+
+            <div class="category">
+              😂 Ko‘ngilochar
+            </div>
+
+            <div class="category">
+              📚 Ta’lim
+            </div>
+
+            <div class="category">
+              ⚽ Sport
+            </div>
+
+            <div class="category">
+              🎥 Kino
+            </div>
+
+          </div>
+
+
+          <!-- VIDEOLAR -->
+
+          <div class="video-grid">
+
+
+            <div
+              class="video-card"
+              onclick="openVideo('VexoTube videosi')"
+            >
+
+              <div class="thumbnail thumb1"></div>
+
+              <h3>
+                VexoTube'dagi yangi video
+              </h3>
+
+              <p>
+                Vexo Channel
+              </p>
+
+              <p>
+                12 ming ko‘rish • 2 kun oldin
+              </p>
+
+            </div>
+
+
+            <div
+              class="video-card"
+              onclick="openVideo('Gaming video')"
+            >
+
+              <div class="thumbnail thumb2"></div>
+
+              <h3>
+                PUBG Mobile yangi gameplay
+              </h3>
+
+              <p>
+                Gaming Uz
+              </p>
+
+              <p>
+                45 ming ko‘rish • 1 kun oldin
+              </p>
+
+            </div>
+
+
+            <div
+              class="video-card"
+              onclick="openVideo('Music video')"
+            >
+
+              <div class="thumbnail thumb3"></div>
+
+              <h3>
+                Yangi musiqa 2026
+              </h3>
+
+              <p>
+                Vexo Music
+              </p>
+
+              <p>
+                89 ming ko‘rish • 3 kun oldin
+              </p>
+
+            </div>
+
+
+            <div
+              class="video-card"
+              onclick="openVideo('Tutorial video')"
+            >
+
+              <div class="thumbnail thumb4"></div>
+
+              <h3>
+                Telefon orqali dasturlash
+              </h3>
+
+              <p>
+                Tech Uz
+              </p>
+
+              <p>
+                25 ming ko‘rish • 5 kun oldin
+              </p>
+
+            </div>
+
+
+          </div>
+
+        </section>
+
+
+        <!-- SHORTS -->
+
+        <section id="shorts" class="page">
+
+          <h2>🎬 Shorts</h2>
+
+          <div class="shorts-grid">
+
+            <div class="short-card">
+              <h3>🔥 Gaming Shorts</h3>
+            </div>
+
+            <div class="short-card">
+              <h3>😂 Kulgi</h3>
+            </div>
+
+            <div class="short-card">
+              <h3>🎵 Music</h3>
+            </div>
+
+            <div class="short-card">
+              <h3>⚽ Sport</h3>
+            </div>
+
+            <div class="short-card">
+              <h3>🚀 Tech</h3>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- SUBSCRIPTIONS -->
+
+        <section id="subscriptions" class="page">
+
+          <h2>📺 Obunalar</h2>
+
+          <div class="empty-box">
+            Hozircha obuna bo‘lgan kanallar yo‘q.
+          </div>
+
+        </section>
+
+
+        <!-- HISTORY -->
+
+        <section id="history" class="page">
+
+          <h2>🕘 Ko‘rish tarixi</h2>
+
+          <div class="empty-box">
+            Ko‘rgan videolaringiz shu yerda chiqadi.
+          </div>
+
+        </section>
+
+
+        <!-- SAVED -->
+
+        <section id="saved" class="page">
+
+          <h2>🔖 Saqlangan videolar</h2>
+
+          <div class="empty-box">
+            Saqlangan videolar yo‘q.
+          </div>
+
+        </section>
+
+
+        <!-- PLAYLIST -->
+
+        <section id="playlists" class="page">
+
+          <h2>📁 Playlistlar</h2>
+
+          <div class="section-box">
+
+            <h3>
+              Yangi playlist
+            </h3>
+
+            <p>
+              Keyinchalik bu yerda playlist yaratish,
+              o‘chirish va videolar qo‘shish mumkin bo‘ladi.
+            </p>
+
+          </div>
+
+        </section>
+
+
+        <!-- UPLOAD -->
+
+        <section id="upload" class="page">
+
+          <h2>⬆️ Video yuklash</h2>
+
+          <div class="section-box upload-form">
+
+            <input
+              type="text"
+              id="videoTitleInput"
+              placeholder="Video nomi"
+            >
+
+            <textarea
+              id="videoDescription"
+              placeholder="Video haqida ma'lumot"
+            ></textarea>
+
+            <input
+              type="text"
+              id="videoTags"
+              placeholder="Teglar: gaming, pubg, music..."
+            >
+
+            <input
+              type="file"
+              id="videoFile"
+              accept="video/*"
+            >
+
+            <input
+              type="file"
+              id="thumbnailFile"
+              accept="image/*"
+            >
+
+            <button onclick="uploadVideo()">
+              ⬆️ Videoni yuklash
+            </button>
+
+            <p
+              id="uploadMessage"
+              class="upload-message"
+            ></p>
+
+          </div>
+
+        </section>
+
+
+        <!-- CHANNEL -->
+
+        <section id="channel" class="page">
+
+          <div class="channel-header">
+
+            <div class="big-avatar">
+              V
+            </div>
+
+            <div>
+
+              <h2>
+                Mening kanalim
+              </h2>
+
+              <p>
+                @vexotube_user
+              </p>
+
+              <p>
+                0 obunachi • 0 video
+              </p>
+
+            </div>
+
+          </div>
+
+          <h2>
+            Videolarim
+          </h2>
+
+          <div class="empty-box">
+            Hali video yuklanmagan.
+          </div>
+
+        </section>
+
+
+        <!-- PROFILE -->
+
+        <section id="profile" class="page">
+
+          <h2>
+            👤 Profil
+          </h2>
+
+          <div class="section-box">
+
+            <h3>
+              VexoTube foydalanuvchisi
+            </h3>
+
+            <p>
+              Email orqali akkauntga kirdingiz.
+            </p>
+
+          </div>
+
+        </section>
+
+
+        <!-- SETTINGS -->
+
+        <section id="settings" class="page">
+
+          <h2>
+            🔧 Sozlamalar
+          </h2>
+
+          <div class="section-box">
+
+            <div class="setting-row">
+
+              <span>
+                🌙 Tungi rejim
+              </span>
+
+              <button>
+                Yoqilgan
+              </button>
+
+            </div>
+
+
+            <div class="setting-row">
+
+              <span>
+                🔔 Bildirishnomalar
+              </span>
+
+              <button>
+                Yoqilgan
+              </button>
+
+            </div>
+
+
+            <div class="setting-row">
+
+              <span>
+                🔐 Xavfsizlik
+              </span>
+
+              <button>
+                Sozlash
+              </button>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ADMIN -->
+
+        <section id="admin" class="page">
+
+          <h2>
+            🛠️ Admin Panel
+          </h2>
+
+          <div class="admin-grid">
+
+            <div class="admin-card">
+
+              <h3>
+                Foydalanuvchilar
+              </h3>
+
+              <strong>
+                0
+              </strong>
+
+            </div>
+
+
+            <div class="admin-card">
+
+              <h3>
+                Videolar
+              </h3>
+
+              <strong>
+                0
+              </strong>
+
+            </div>
+
+
+            <div class="admin-card">
+
+              <h3>
+                Kanallar
+              </h3>
+
+              <strong>
+                0
+              </strong>
+
+            </div>
+
+
+            <div class="admin-card">
+
+              <h3>
+                Shikoyatlar
+              </h3>
+
+              <strong>
+                0
+              </strong>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+      </main>
+
+    </div>
+
+
+    <!-- MOBILE NAV -->
+
+    <nav class="mobile-nav">
+
+      <button data-page="home">
+        <span>🏠</span>
+        Bosh sahifa
+      </button>
+
+      <button data-page="shorts">
+        <span>🎬</span>
+        Shorts
+      </button>
+
+      <button data-page="upload">
+        <span>➕</span>
+        Yuklash
+      </button>
+
+      <button data-page="subscriptions">
+        <span>📺</span>
+        Obunalar
+      </button>
+
+      <button data-page="channel">
+        <span>👤</span>
+        Kanal
+      </button>
+
+    </nav>
+
+
+    <!-- VIDEO MODAL -->
+
+    <div
+      id="videoModal"
+      class="modal"
+    >
+
+      <div class="modal-box">
+
+        <button
+          class="close-modal"
+          onclick="closeVideo()"
+        >
+          ×
+        </button>
+
+        <div class="video-player">
+
+          ▶ Video player
+
+        </div>
+
+        <div class="modal-content">
+
+          <h2 id="videoTitle">
+            Video
+          </h2>
+
+          <button
+            class="like-button"
+            onclick="likeVideo()"
+          >
+            👍 Like <span id="likes">0</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+              </html>
